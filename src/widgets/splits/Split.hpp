@@ -12,6 +12,10 @@
 #include <QWidget>
 #include <boost/signals2.hpp>
 
+#ifdef HAVE_QTSPELL
+#    include <QtSpell.hpp>
+#endif
+
 namespace chatterino {
 
 class ChannelView;
@@ -153,6 +157,10 @@ private:
     pajlada::Signals::Connection indirectChannelChangedConnection_;
     pajlada::Signals::SignalHolder signalHolder_;
     std::vector<boost::signals2::scoped_connection> bSignals_;
+
+#ifdef HAVE_QTSPELL
+    QtSpell::TextEditChecker checker_;
+#endif
 
 public slots:
     void addSibling();

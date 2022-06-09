@@ -711,6 +711,12 @@ endif ()
 
 target_include_directories(${LIBRARY_PROJECT} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
+if (QTSPELL_FOUND)
+    target_compile_definitions(${LIBRARY_PROJECT} PUBLIC HAVE_QTSPELL)
+    target_include_directories(${LIBRARY_PROJECT} PUBLIC ${QTSPELL_INCLUDE_DIRS})
+    target_link_libraries(${LIBRARY_PROJECT} PUBLIC ${QTSPELL_LIBRARIES})
+endif()
+
 if (WinToast_FOUND)
     target_link_libraries(${LIBRARY_PROJECT}
         PUBLIC

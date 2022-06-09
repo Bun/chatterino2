@@ -103,6 +103,9 @@ find_package(RapidJSON REQUIRED)
 
 find_package(Websocketpp REQUIRED)
 
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(QTSPELL QtSpell-qt5)
+
 if (BUILD_TESTS)
     add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/lib/googletest" "lib/googletest")
 

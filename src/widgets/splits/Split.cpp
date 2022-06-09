@@ -54,6 +54,10 @@
 #include <QPainter>
 #include <QVBoxLayout>
 
+#ifdef HAVE_QTSPELL
+#    include <QtSpell.hpp>
+#endif
+
 #include <functional>
 #include <random>
 
@@ -103,6 +107,9 @@ Split::Split(QWidget *parent)
     this->vbox_->addWidget(this->view_, 1);
     this->vbox_->addWidget(this->input_);
 
+#ifdef HAVE_QTSPELL
+    this->checker_.setTextEdit(this->input_->ui_.textEdit);
+#endif
     this->input_->ui_.textEdit->installEventFilter(parent);
 
     // update placeholder text on Twitch account change and channel change
